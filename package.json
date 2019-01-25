@@ -1,0 +1,9 @@
+{
+  "name": "ProjectTrak",
+  "version": "1.0.0",
+  "description": "Project managment application built with the MERN stack.",
+  "main": "server.js",
+  "repository": "https://github.com/cm3z4/ProjectTrak.git",
+  "author": "Christopher Meza <m4tchb0x87@gmail.com>",
+  "license": "MIT"
+}
