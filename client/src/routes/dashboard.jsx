@@ -16,14 +16,14 @@ const dashboardRoutes = [
   },
   {
     path: "/user",
-    name: "User Profile",
-    icon: "pe-7s-user",
+    name: "Create Prospect",
+    icon: "pe-7s-plus",
     component: UserProfile
   },
   {
     path: "/table",
-    name: "Table List",
-    icon: "pe-7s-note2",
+    name: "Projects",
+    icon: "pe-7s-folder",
     component: TableList
   },
   {

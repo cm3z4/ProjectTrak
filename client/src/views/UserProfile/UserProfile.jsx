@@ -23,7 +23,7 @@ class UserProfile extends Component {
           <Row>
             <Col md={8}>
               <Card
-                title="Edit Profile"
+                title="New Prospect"
                 content={
                   <form>
                     <FormInputs
@@ -125,7 +125,7 @@ class UserProfile extends Component {
                       </Col>
                     </Row>
                     <Button bsStyle="info" pullRight fill type="submit">
-                      Update Profile
+                      Create Prospect
                     </Button>
                     <div className="clearfix" />
                   </form>
