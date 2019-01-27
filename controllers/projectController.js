@@ -1,6 +1,6 @@
 const db = require("../models");
 
-mondule.exports = {
+module.exports = {
     findAll: function(req, res) {
         db.Project(req.query)
             .find(req.qurey)

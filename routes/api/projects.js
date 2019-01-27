@@ -5,4 +5,4 @@ router.route("/")
   .get(projectController.findAll)
   .post(projectController.create);
 
-mondule.exports = router;
+module.exports = router;
