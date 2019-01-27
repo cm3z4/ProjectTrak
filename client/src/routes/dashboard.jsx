@@ -1,5 +1,5 @@
 import Dashboard from "views/Dashboard/Dashboard";
-import UserProfile from "views/UserProfile/UserProfile";
+import createProject from "views/createProject/createProject";
 import TableList from "views/TableList/TableList";
 import Typography from "views/Typography/Typography";
 import Icons from "views/Icons/Icons";
@@ -16,9 +16,9 @@ const dashboardRoutes = [
   },
   {
     path: "/user",
-    name: "Create Prospect",
+    name: "Create Project",
     icon: "pe-7s-plus",
-    component: UserProfile
+    component: createProject
   },
   {
     path: "/table",
