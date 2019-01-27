@@ -1,8 +1,10 @@
+
 //
 // //
 // // // For notifications
 // //
 //
+
 var defaultWidth =
   window.screen.width > 768 ? window.screen.width * 1 / 3 : window.screen.width;
 
@@ -474,30 +476,34 @@ const iconsArray = [
 //
 // Data for Pie Chart
 var dataPie = {
-  labels: ["40%", "20%", "40%"],
-  series: [40, 20, 40]
+  labels: ["50%", "30%", "20%"],
+  series: [50, 30, 20]
 };
 var legendPie = {
-  names: ["Open", "Bounce", "Unsubscribe"],
+  names: ["Won", "Loss", "Pending"],
   types: ["info", "danger", "warning"]
 };
 
 // Data for Line Chart
 var dataSales = {
   labels: [
-    "9:00AM",
-    "12:00AM",
-    "3:00PM",
-    "6:00PM",
-    "9:00PM",
-    "12:00PM",
-    "3:00AM",
-    "6:00AM"
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "Mai",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec"
   ],
   series: [
-    [287, 385, 490, 492, 554, 586, 698, 695],
-    [67, 152, 143, 240, 287, 335, 435, 437],
-    [23, 113, 67, 108, 190, 239, 307, 308]
+    [455,656,498,396,556,554,456,321,426,521,452,684],
+    [365,233,456,324,684,426,152,489,426,589,674,365],
+    [122,156,178,156,145,165,165,145,154,178,154,254]
   ]
 };
 var optionsSales = {
@@ -529,7 +535,7 @@ var responsiveSales = [
   ]
 ];
 var legendSales = {
-  names: ["Open", "Click", "Click Second Time"],
+  names: ["Won", "Loss", "Pending"],
   types: ["info", "danger", "warning"]
 };
 
