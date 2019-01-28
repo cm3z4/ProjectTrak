@@ -476,8 +476,8 @@ const iconsArray = [
 //
 // Data for Pie Chart
 var dataPie = {
-  labels: ["50%", "30%", "20%"],
-  series: [50, 30, 20]
+  labels: ["55%", "25%", "20%"],
+  series: [55, 25, 20]
 };
 var legendPie = {
   names: ["Won", "Loss", "Pending"],
@@ -557,6 +557,7 @@ var dataBar = {
   ],
   series: [
     [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895],
+    [412, 243, 280, 580, 453, 353, 300, 364, 368, 410, 636, 695],
     [412, 243, 280, 580, 453, 353, 300, 364, 368, 410, 636, 695]
   ]
 };
@@ -581,8 +582,8 @@ var responsiveBar = [
   ]
 ];
 var legendBar = {
-  names: ["Tesla Model S", "BMW 5 Series"],
-  types: ["info", "danger"]
+  names: ["Wins", "Loss" ,"Pending"],
+  types: ["info", "Danger", "warning"]
 };
 
 module.exports = {
