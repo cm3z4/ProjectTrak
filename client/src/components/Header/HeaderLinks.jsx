@@ -7,7 +7,7 @@ class HeaderLinks extends Component {
       <div>
         <i className="fa fa-globe" />
         <b className="caret" />
-        <span className="notification">5</span>
+        <span className="notification">1</span>
         <p className="hidden-lg hidden-md">Notification</p>
       </div>
     );
@@ -26,7 +26,7 @@ class HeaderLinks extends Component {
             noCaret
             id="basic-nav-dropdown"
           >
-            <MenuItem eventKey={2.1}>Notification 1</MenuItem>
+            <MenuItem eventKey={2.1}>you have 1 new messages</MenuItem>
             <MenuItem eventKey={2.2}>Notification 2</MenuItem>
             <MenuItem eventKey={2.3}>Notification 3</MenuItem>
             <MenuItem eventKey={2.4}>Notification 4</MenuItem>
