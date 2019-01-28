@@ -10,31 +10,50 @@ import {
 
 import { Card } from "components/Card/Card.jsx";
 import { FormInputs } from "components/FormInputs/FormInputs.jsx";
-// import API from "../../utils/API";
+import API from "../../utils/API";
 import Button from "components/CustomButton/CustomButton.jsx";
 
 
 class createProject extends Component {
   state = {
-    project_number:"",
+    salesman: "",
+    projectName: "",
+    status: "",
+    companyName: "",
+    companyAddress: "",
+    contactName: "",
+    contact_number: "",
+    contactEmail: "",
+    estimatedStart: "",
+    estimatedFinish: "",
+    estimatedValue: 0,
+    discription: ""
+  }
+  createFormSubmit = event => {
+    event.preventDefault();
+    API.createProject({
+      salesman: this.state.salesman,
+      project_name: this.state.projectName,
+      status: this.state.status,
+      company_name: this.state.companyName,
+      company_address: this.state.companyAddress,
+      contact_name: this.state.contactName,
+      contact_number: this.state.contactEmail,
+      contact_email: this.state.contactEmail,
+      estimated_start: this.state.estimatedStart,
+      estimated_finish: this.state.estimatedFinish,
+      estimated_value: this.state.estimatedValue,
+      discription: this.state.discription
+    })
+      .then()
+      .catch(err => console.log(err));
   };
 
   handleInputChange = event => {
+    console.log(this.state);
     const { name, value } = event.target;
     this.setState({
       [name]: value
-    });
-  };
-
-  handleFormSubmit = event => {
-    // Preventing the default behavior of the form submit (which is to refresh the page)
-    event.preventDefault();
-
-    // Alert the user their first and last name, clear `this.state.firstName` and `this.state.lastName`, clearing the inputs
-    alert(`Hello ${this.state.project_number} ${this.state.lastName}`);
-    this.setState({
-      pproject_number: "",
-      lastName: ""
     });
   };
 
@@ -66,19 +85,19 @@ class createProject extends Component {
                       <Col md={4}>
                         <FormGroup controlId="projectNumber">
                           <ControlLabel>Project Number</ControlLabel>
-                          <FormControl name="projectNumber" type="text" placeholder="P-XXXX"
+                          <FormControl name="projectName" type="text" placeholder="P-XXXX" onChange={this.handleInputChange}
                           />
                         </FormGroup></Col>
                       <Col md={4}>
                         <FormGroup controlId="salesman">
                           <ControlLabel>Salesman</ControlLabel>
-                          <FormControl value={this.state.project_number} name="salesman" onChange={this.handleInputChange} type="text" placeholder="John Smith" defaultValue="" disabled="true"
+                          <FormControl name="salesman" type="text" placeholder="John Smith" defaultValue="" disabled="true" onChange={this.handleInputChange}
                           />
                         </FormGroup></Col>
                       <Col md={4}>
                         <FormGroup controlId="status" type="text">
                           <ControlLabel>Status</ControlLabel>
-                          <FormControl name="status" componentClass="select">
+                          <FormControl name="status" componentClass="select" onChange={this.handleInputChange}>
                             <option value="Prospect">Prospect</option>
                             <option value="Bidding">Bidding</option>
                             <option value="Pending">Pending</option>
@@ -97,7 +116,8 @@ class createProject extends Component {
                           type: "text",
                           bsClass: "form-control",
                           placeholder: "Exxon Mobil",
-                          defaultValue: ""
+                          defaultValue: "",
+                          onChange: this.handleInputChange
                         },
                         {
                           name: "companyAddress",
@@ -105,7 +125,8 @@ class createProject extends Component {
                           type: "text",
                           bsClass: "form-control",
                           placeholder: "3525 Decker Dr, Baytown, TX 77520",
-                          defaultValue: ""
+                          defaultValue: "",
+                          onChange: this.handleInputChange
                         }
                       ]}
                     />
@@ -119,7 +140,8 @@ class createProject extends Component {
                           type: "text",
                           bsClass: "form-control",
                           placeholder: "John Smith",
-                          defaultValue: ""
+                          defaultValue: "",
+                          onChange: this.handleInputChange
                         },
                         {
                           name: "contactNumber",
@@ -127,7 +149,8 @@ class createProject extends Component {
                           type: "text",
                           bsClass: "form-control",
                           placeholder: "(555) 555-5555 ",
-                          defaultValue: ""
+                          defaultValue: "",
+                          onChange: this.handleInputChange
                         },
                         {
                           name: "contactEmail",
@@ -135,7 +158,8 @@ class createProject extends Component {
                           type: "email",
                           bsClass: "form-control",
                           placeholder: "contact@exxon.com",
-                          defaultValue: ""
+                          defaultValue: "",
+                          onChange: this.handleInputChange
                         }
                       ]}
                     />
@@ -149,7 +173,8 @@ class createProject extends Component {
                           type: "date",
                           bsClass: "form-control",
                           placeholder: "",
-                          defaultValue: ""
+                          defaultValue: "",
+                          onChange: this.handleInputChange
                         },
                         {
                           name: "estimatedFinish",
@@ -157,7 +182,8 @@ class createProject extends Component {
                           type: "date",
                           bsClass: "form-control",
                           placeholder: "",
-                          defaultValue: ""
+                          defaultValue: "",
+                          onChange: this.handleInputChange
                         },
                         {
                           name: "estimatedValue",
@@ -165,7 +191,8 @@ class createProject extends Component {
                           type: "number",
                           bsClass: "form-control",
                           placeholder: "",
-                          defaultValue: 0
+                          defaultValue: 0,
+                          onChange: this.handleInputChange
                         }
                       ]}
                     />
@@ -181,6 +208,7 @@ class createProject extends Component {
                             bsClass="form-control"
                             placeholder="Add a basic description of the project."
                             defaultValue=""
+                            onChange= {this.handleInputChange}
                           />
                         </FormGroup>
                       </Col>
