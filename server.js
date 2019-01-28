@@ -1,9 +1,9 @@
-const express = require('express');
-const morgan = require('morgan');
+const express = require("express");
 const path = require("path");
 
+const PORT = process.env.PORT || 3001;
 const app = express();
-app.use(morgan('dev'));
+const apiRoutes = require("./routes/apiRoutes");
 
 // Middleware.
 app.use(express.urlencoded({ extended: true }));
@@ -14,17 +14,15 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 };
 
-const router = require('./routes/api');
-app.use('/api', router);
+// Use apiRoutes.
+app.use("/api", apiRoutes);
 
 // Send every request to the React app.
 // Define any API routes before this runs.
-app.get("*", function (req, res) {
+app.get("*", function(req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
-// Application is listening on port...
-const port = process.env.PORT || 3001;
-app.listen(port, () => {
-  console.log('Application is listening on port 3001');
+app.listen(PORT, function() {
+  console.log(`🌎 ==> API server now on port ${PORT}!`);
 });
