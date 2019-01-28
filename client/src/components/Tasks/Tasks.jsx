@@ -20,7 +20,9 @@ export class Tasks extends Component {
       "Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroi",
       "Create 4 Invisible User Experiences you Never Knew About",
       'Read "Following makes Medium better"',
-      "Unfollow 5 enemies from twitter"
+      "Unfollow 5 enemies from twitter",
+      "add a ascroll bar to this "
+      
     ];
     var tasks = [];
     var number;

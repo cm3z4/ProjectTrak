@@ -141,8 +141,8 @@ class Dashboard extends Component {
 
             <Col md={6}>
               <Card
-                title="Tasks"
-                category="Backend development"
+                title="Projects"
+                category="Recent projects added/updated"
                 stats="Updated 3 minutes ago"
                 statsIcon="fa fa-history"
                 content={
