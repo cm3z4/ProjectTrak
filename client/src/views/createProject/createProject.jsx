@@ -10,16 +10,46 @@ import {
 
 import { Card } from "components/Card/Card.jsx";
 import { FormInputs } from "components/FormInputs/FormInputs.jsx";
-//import API from "../../utils/API";
+// import API from "../../utils/API";
 import Button from "components/CustomButton/CustomButton.jsx";
 
 
 class createProject extends Component {
-
-  createFormSubmit = event => {
-    event.preventDefault();
-    alert("This Sucks!");
+  state = {
+    project_number:"",
   };
+
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
+
+  handleFormSubmit = event => {
+    // Preventing the default behavior of the form submit (which is to refresh the page)
+    event.preventDefault();
+
+    // Alert the user their first and last name, clear `this.state.firstName` and `this.state.lastName`, clearing the inputs
+    alert(`Hello ${this.state.project_number} ${this.state.lastName}`);
+    this.setState({
+      pproject_number: "",
+      lastName: ""
+    });
+  };
+
+  // handleFormSubmit = event => {
+  //   event.preventDefault();
+  //   if (this.state.title && this.state.author) {
+  //     API.saveBook({
+  //       title: this.state.title,
+  //       author: this.state.author,
+  //       synopsis: this.state.synopsis
+  //     })
+  //       .then(res => this.loadBooks())
+  //       .catch(err => console.log(err));
+  //   }
+  // };
 
   render() {
     return (
@@ -42,7 +72,7 @@ class createProject extends Component {
                       <Col md={4}>
                         <FormGroup controlId="salesman">
                           <ControlLabel>Salesman</ControlLabel>
-                          <FormControl name="salesman" type="text" placeholder="John Smith" defaultValue="" disabled="true"
+                          <FormControl value={this.state.project_number} name="salesman" onChange={this.handleInputChange} type="text" placeholder="John Smith" defaultValue="" disabled="true"
                           />
                         </FormGroup></Col>
                       <Col md={4}>
@@ -155,7 +185,7 @@ class createProject extends Component {
                         </FormGroup>
                       </Col>
                     </Row>
-                    <Button bsStyle="info" pullRight fill type="submit">
+                    <Button onClick={this.handleFormSubmit} bsStyle="info" pullRight fill type="submit">
                       Create Prospect
                     </Button>
                     <div className="clearfix" />
