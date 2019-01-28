@@ -16,9 +16,10 @@ import Button from "components/CustomButton/CustomButton.jsx";
 
 class createProject extends Component {
   state = {
-    salesman: "",
+    projectNumber:"",
+    salesman: "John Smith",
     projectName: "",
-    status: "",
+    status: "Prospect",
     companyName: "",
     companyAddress: "",
     contactName: "",
@@ -29,25 +30,25 @@ class createProject extends Component {
     estimatedValue: 0,
     discription: ""
   }
-  createFormSubmit = event => {
-    event.preventDefault();
-    API.createProject({
-      salesman: this.state.salesman,
-      project_name: this.state.projectName,
-      status: this.state.status,
-      company_name: this.state.companyName,
-      company_address: this.state.companyAddress,
-      contact_name: this.state.contactName,
-      contact_number: this.state.contactEmail,
-      contact_email: this.state.contactEmail,
-      estimated_start: this.state.estimatedStart,
-      estimated_finish: this.state.estimatedFinish,
-      estimated_value: this.state.estimatedValue,
-      discription: this.state.discription
-    })
-      .then()
-      .catch(err => console.log(err));
-  };
+  // createFormSubmit = event => {
+  //   event.preventDefault();
+  //   API.createProject({
+  //     salesman: this.state.salesman,
+  //     project_name: this.state.projectName,
+  //     status: this.state.status,
+  //     company_name: this.state.companyName,
+  //     company_address: this.state.companyAddress,
+  //     contact_name: this.state.contactName,
+  //     contact_number: this.state.contactEmail,
+  //     contact_email: this.state.contactEmail,
+  //     estimated_start: this.state.estimatedStart,
+  //     estimated_finish: this.state.estimatedFinish,
+  //     estimated_value: this.state.estimatedValue,
+  //     discription: this.state.discription
+  //   })
+  //     .then()
+  //     .catch(err => console.log(err));
+  // };
 
   handleInputChange = event => {
     console.log(this.state);
@@ -57,18 +58,17 @@ class createProject extends Component {
     });
   };
 
-  // handleFormSubmit = event => {
-  //   event.preventDefault();
-  //   if (this.state.title && this.state.author) {
-  //     API.saveBook({
-  //       title: this.state.title,
-  //       author: this.state.author,
-  //       synopsis: this.state.synopsis
-  //     })
-  //       .then(res => this.loadBooks())
-  //       .catch(err => console.log(err));
-  //   }
-  // };
+  handleFormSubmit = event => {
+    // Preventing the default behavior of the form submit (which is to refresh the page)
+    event.preventDefault();
+
+    // Alert the user their first and last name, clear `this.state.firstName` and `this.state.lastName`, clearing the inputs
+    alert(`${this.state.salesman} 
+           ${this.state.projectName}
+           ${this.state.status}
+           ${this.state.companyName}`);
+    
+  };
 
   render() {
     return (
@@ -91,7 +91,7 @@ class createProject extends Component {
                       <Col md={4}>
                         <FormGroup controlId="salesman">
                           <ControlLabel>Salesman</ControlLabel>
-                          <FormControl name="salesman" type="text" placeholder="John Smith" defaultValue="" disabled="true" onChange={this.handleInputChange}
+                          <FormControl name="salesman" type="text" placeholder="John Smith" defaultValue="John Smith" disabled="true" onChange={this.handleInputChange}
                           />
                         </FormGroup></Col>
                       <Col md={4}>
