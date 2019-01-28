@@ -12,7 +12,7 @@ const projectSchema = new Schema({
   contact_email: { type: String, required: true },
   estimated_start: { type: Date, required: true },
   estimated_finish: { type: Date, required: true },
-  estimated_value: { type: String, required: true },
+  estimated_value: { type: Number, required: true },
   discription: { type: String, required: true }
 });
 
