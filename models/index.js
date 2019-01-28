@@ -1,3 +1,3 @@
-mondule.exports = {
+module.exports = {
     Project: require("./project")
 };

@@ -10,10 +10,17 @@ import {
 
 import { Card } from "components/Card/Card.jsx";
 import { FormInputs } from "components/FormInputs/FormInputs.jsx";
+//import API from "../../utils/API";
 import Button from "components/CustomButton/CustomButton.jsx";
 
 
 class createProject extends Component {
+
+  createFormSubmit = event => {
+    event.preventDefault();
+    alert("This Sucks!");
+  };
+
   render() {
     return (
       <div className="content">
@@ -23,25 +30,25 @@ class createProject extends Component {
               <Card
                 title="New Project"
                 content={
-                  <form>
+                  <form onSubmit={this.createFormSubmit}>
                     {/* 1ST ROW --> Project Number --> Salesman --> Status. */}
                     <Row>
                       <Col md={4}>
-                        <FormGroup controlId="projectNumberText">
+                        <FormGroup controlId="projectNumber">
                           <ControlLabel>Project Number</ControlLabel>
-                          <FormControl type="text" placeholder="P-XXXX"
+                          <FormControl name="projectNumber" type="text" placeholder="P-XXXX"
                           />
                         </FormGroup></Col>
                       <Col md={4}>
-                        <FormGroup controlId="salesmanText">
+                        <FormGroup controlId="salesman">
                           <ControlLabel>Salesman</ControlLabel>
-                          <FormControl type="text" placeholder="John Smith" defaultValue="" disabled="true"
+                          <FormControl name="salesman" type="text" placeholder="John Smith" defaultValue="" disabled="true"
                           />
                         </FormGroup></Col>
                       <Col md={4}>
-                        <FormGroup controlId="statusText" type="text">
+                        <FormGroup controlId="status" type="text">
                           <ControlLabel>Status</ControlLabel>
-                          <FormControl componentClass="select">
+                          <FormControl name="status" componentClass="select">
                             <option value="Prospect">Prospect</option>
                             <option value="Bidding">Bidding</option>
                             <option value="Pending">Pending</option>
@@ -55,6 +62,7 @@ class createProject extends Component {
                       ncols={["col-md-6", "col-md-6"]}
                       proprieties={[
                         {
+                          name: "companyName",
                           label: "Company Name",
                           type: "text",
                           bsClass: "form-control",
@@ -62,6 +70,7 @@ class createProject extends Component {
                           defaultValue: ""
                         },
                         {
+                          name: "companyAddress",
                           label: "Company Address",
                           type: "text",
                           bsClass: "form-control",
@@ -75,6 +84,7 @@ class createProject extends Component {
                       ncols={["col-md-4", "col-md-4", "col-md-4"]}
                       proprieties={[
                         {
+                          name: "contactName",
                           label: "Contact Name",
                           type: "text",
                           bsClass: "form-control",
@@ -82,6 +92,7 @@ class createProject extends Component {
                           defaultValue: ""
                         },
                         {
+                          name: "contactNumber",
                           label: "Contact Number",
                           type: "text",
                           bsClass: "form-control",
@@ -89,6 +100,7 @@ class createProject extends Component {
                           defaultValue: ""
                         },
                         {
+                          name: "contactEmail",
                           label: "Contact Email",
                           type: "email",
                           bsClass: "form-control",
@@ -102,6 +114,7 @@ class createProject extends Component {
                       ncols={["col-md-4", "col-md-4", "col-md-4"]}
                       proprieties={[
                         {
+                          name: "estimatedStart",
                           label: "Estimated Start",
                           type: "date",
                           bsClass: "form-control",
@@ -109,6 +122,7 @@ class createProject extends Component {
                           defaultValue: ""
                         },
                         {
+                          name: "estimatedFinish",
                           label: "Estimated Finish",
                           type: "date",
                           bsClass: "form-control",
@@ -116,6 +130,7 @@ class createProject extends Component {
                           defaultValue: ""
                         },
                         {
+                          name: "estimatedValue",
                           label: "Estimated Value",
                           type: "number",
                           bsClass: "form-control",
@@ -130,6 +145,7 @@ class createProject extends Component {
                         <FormGroup controlId="projectDescriptionText">
                           <ControlLabel>Project Description</ControlLabel>
                           <FormControl
+                            name="projectDescription"
                             rows="5"
                             componentClass="textarea"
                             bsClass="form-control"
