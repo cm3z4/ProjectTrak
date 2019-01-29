@@ -1,13 +1,13 @@
 // import router and projectsController
 const router = require("express").Router();
-const projectsController = require("../../controllers/projectsController");
+const projectsController = require("../../controllers/projectController");
 
-// route /api/books
+// route /api/projects
 router.route("/")
     .get(projectsController.findAll)
     .post(projectsController.create);
 
-// route /api/books/:id
+// route /api/projects/:id
 router.route("/:id")
     .get(projectsController.findById)
     .put(projectsController.update)

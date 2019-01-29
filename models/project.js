@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const projectSchema = new Schema({
+  projectNumber: {type: String, required: true},
   salesman: { type: String, required: true },
-  project_name: { type: String, required: true},
   status: { type: String, required: true },
   company_name: { type: String, required: true },
   company_address: { type: String, required: true },
@@ -13,7 +13,7 @@ const projectSchema = new Schema({
   estimated_start: { type: Date, required: true },
   estimated_finish: { type: Date, required: true },
   estimated_value: { type: Number, required: true },
-  discription: { type: String, required: true }
+  description: { type: String, required: true }
 });
 
 const Project = mongoose.model("Project", projectSchema);
