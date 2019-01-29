@@ -15,8 +15,9 @@ import Button from "components/CustomButton/CustomButton.jsx";
 
 
 class createProject extends Component {
+
   state = {
-    projectNumber:"",
+    projectNumber: "",
     salesman: "John Smith",
     status: "Prospect",
     companyName: "",
@@ -197,7 +198,7 @@ class createProject extends Component {
                     {/* 5TH ROW --> Project Description. */}
                     <Row>
                       <Col md={12}>
-                        <FormGroup controlId="projectDescriptionText">
+                        <FormGroup controlId="projectDescription">
                           <ControlLabel>Project Description</ControlLabel>
                           <FormControl
                             name="description"
@@ -206,7 +207,7 @@ class createProject extends Component {
                             bsClass="form-control"
                             placeholder="Add a basic description of the project."
                             defaultValue=""
-                            onChange= {this.handleInputChange}
+                            onChange={this.handleInputChange}
                           />
                         </FormGroup>
                       </Col>
