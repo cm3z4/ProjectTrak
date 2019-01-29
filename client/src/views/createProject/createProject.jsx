@@ -10,63 +10,51 @@ import {
 
 import { Card } from "components/Card/Card.jsx";
 import { FormInputs } from "components/FormInputs/FormInputs.jsx";
+import API from "../../utils/API";
 import Button from "components/CustomButton/CustomButton.jsx";
 
 
 class createProject extends Component {
+
   state = {
-    projectNumber:"",
+    projectNumber: "",
     salesman: "John Smith",
-    projectName: "",
     status: "Prospect",
     companyName: "",
     companyAddress: "",
     contactName: "",
-    contact_number: "",
+    contactNumber: "",
     contactEmail: "",
     estimatedStart: "",
     estimatedFinish: "",
     estimatedValue: 0,
-    discription: ""
-  }
-  // createFormSubmit = event => {
-  //   event.preventDefault();
-  //   API.createProject({
-  //     salesman: this.state.salesman,
-  //     project_name: this.state.projectName,
-  //     status: this.state.status,
-  //     company_name: this.state.companyName,
-  //     company_address: this.state.companyAddress,
-  //     contact_name: this.state.contactName,
-  //     contact_number: this.state.contactEmail,
-  //     contact_email: this.state.contactEmail,
-  //     estimated_start: this.state.estimatedStart,
-  //     estimated_finish: this.state.estimatedFinish,
-  //     estimated_value: this.state.estimatedValue,
-  //     discription: this.state.discription
-  //   })
-  //     .then()
-  //     .catch(err => console.log(err));
-  // };
+    projectDescription: ""
+  };
 
-  handleInputChange = event => {
-    console.log(this.state);
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value
+  createFormSubmit = e => {
+    e.preventDefault();
+    API.createProject({
+      project_number: this.state.projectNumber,
+      salesman: this.state.salesman,
+      status: this.state.status,
+      company_name: this.state.companyName,
+      company_address: this.state.companyAddress,
+      contact_name: this.state.contactName,
+      contact_number: this.state.contactNumber,
+      contact_email: this.state.contactEmail,
+      estimated_start: this.state.estimatedStart,
+      estimated_finish: this.state.estimatedFinish,
+      estimated_value: this.state.estimatedValue,
+      project_description: this.state.projectDescription
     });
   };
 
-  handleFormSubmit = event => {
-    // Preventing the default behavior of the form submit (which is to refresh the page)
-    event.preventDefault();
-
-    // Alert the user their first and last name, clear `this.state.firstName` and `this.state.lastName`, clearing the inputs
-    alert(`${this.state.salesman} 
-           ${this.state.projectName}
-           ${this.state.status}
-           ${this.state.companyName}`);
-    
+  handleInputChange = e => {
+    //console.log(this.state);
+    const { name, value } = e.target;
+    this.setState({
+      [name]: value
+    });
   };
 
   render() {
@@ -84,7 +72,7 @@ class createProject extends Component {
                       <Col md={4}>
                         <FormGroup controlId="projectNumber">
                           <ControlLabel>Project Number</ControlLabel>
-                          <FormControl name="projectName" type="text" placeholder="P-XXXX" onChange={this.handleInputChange}
+                          <FormControl name="projectNumber" type="text" placeholder="P-XXXX" onChange={this.handleInputChange}
                           />
                         </FormGroup></Col>
                       <Col md={4}>
@@ -198,7 +186,7 @@ class createProject extends Component {
                     {/* 5TH ROW --> Project Description. */}
                     <Row>
                       <Col md={12}>
-                        <FormGroup controlId="projectDescriptionText">
+                        <FormGroup controlId="projectDescription">
                           <ControlLabel>Project Description</ControlLabel>
                           <FormControl
                             name="projectDescription"
@@ -207,12 +195,12 @@ class createProject extends Component {
                             bsClass="form-control"
                             placeholder="Add a basic description of the project."
                             defaultValue=""
-                            onChange= {this.handleInputChange}
+                            onChange={this.handleInputChange}
                           />
                         </FormGroup>
                       </Col>
                     </Row>
-                    <Button onClick={this.handleFormSubmit} bsStyle="info" pullRight fill type="submit">
+                    <Button bsStyle="info" pullRight fill type="submit">
                       Create Prospect
                     </Button>
                     <div className="clearfix" />
