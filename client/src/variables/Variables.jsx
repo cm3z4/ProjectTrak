@@ -249,7 +249,7 @@ var style = {
 // // // For tables
 // //
 //
-const thArray = ["ID", "Name", "Salary", "Country", "City"];
+const thArray = ["P#", "Salesman", "Status", "Company Name", "Project Description"];
 const tdArray = [
   ["1", "Dakota Rice", "$36,738", "Niger", "Oud-Turnhout"],
   ["2", "Minerva Hooper", "$23,789", "Curaçao", "Sinaai-Waas"],

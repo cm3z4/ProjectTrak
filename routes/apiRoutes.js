@@ -40,4 +40,18 @@ router.post("/create", (req, res) => {
 
 });
 
+// get all projects for project-trak db
+router.get("/projects", (req, res) => {
+    console.log("the /project route is working");
+    models.Project
+        .find(req.query)
+        .sort({ date: -1 })
+        .then(function (dbProject) {
+            console.log(dbProject)
+        })
+        .catch(function (err) {
+            console.log(err);
+        });
+})
+
 module.exports = router;

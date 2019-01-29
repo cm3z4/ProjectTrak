@@ -28,10 +28,11 @@ class createProject extends Component {
     estimatedStart: "",
     estimatedFinish: "",
     estimatedValue: 0,
-    description: ""
-  }
-  createFormSubmit = event => {
-    event.preventDefault();
+    projectDescription: ""
+  };
+
+  createFormSubmit = e => {
+    e.preventDefault();
     API.createProject({
       project_number: this.state.projectNumber,
       salesman: this.state.salesman,
@@ -44,29 +45,16 @@ class createProject extends Component {
       estimated_start: this.state.estimatedStart,
       estimated_finish: this.state.estimatedFinish,
       estimated_value: this.state.estimatedValue,
-      description: this.state.description
-    })
-      .then()
-      .catch(err => console.log(err));
-  };
-
-  handleInputChange = event => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value
+      project_description: this.state.projectDescription
     });
   };
 
-  handleFormSubmit = event => {
-    
-    event.preventDefault();
-
-   
-    alert(`${this.state.salesman} 
-           ${this.state.projectName}
-           ${this.state.status}
-           ${this.state.companyName}`);
-    
+  handleInputChange = e => {
+    //console.log(this.state);
+    const { name, value } = e.target;
+    this.setState({
+      [name]: value
+    });
   };
 
   render() {
