@@ -48,6 +48,7 @@ router.get("/projects", (req, res) => {
         .sort({ date: -1 })
         .then(function (dbProject) {
             console.log(dbProject)
+            res.json(dbProject)
         })
         .catch(function (err) {
             console.log(err);

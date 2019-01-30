@@ -1,20 +1,27 @@
 import React, { Component } from "react";
 import { Grid, Row, Col, Table } from "react-bootstrap";
-import API from "../../utils/API";
+
 
 import Card from "components/Card/Card.jsx";
 import { thArray, tdArray } from "variables/Variables.jsx";
+import Axios from "axios";
 
 class TableList extends Component {
+  
+  state = {
+    projects: []
+  };
 
   componentDidMount() {
     this.getProjects();
   }
 
   getProjects() {
-    API.getAllProjects()
-      .then(res => console.log(res.data));
-    console.log("after tablelist component mounts getProjects() working")
+    Axios.get("/api/projects")
+      .then(res => {this.setState({ projects: res.data });
+      console.log(this.state.projects)
+  });
+      
   }
   render() {
     return (
