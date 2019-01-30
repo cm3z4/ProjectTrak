@@ -38,7 +38,7 @@ class Dashboard extends Component {
               <StatsCard
                 bigIcon={<i className="pe-7s-graph1 text-danger" />}
                 statsText={new Date().getFullYear()+" Projected Revenue"}
-                statsValue={"$"+Math.floor(Math.random() * 400000 + 1).toFixed(2)}
+                statsValue={"$"+Math.floor(Math.random() * 40000 + 1).toFixed(2)}
                 statsIcon={<i className="fa fa-refresh" />}
                 statsIconText="Updated now"
               />
@@ -47,7 +47,7 @@ class Dashboard extends Component {
               <StatsCard
                 bigIcon={<i className="pe-7s-graph1 text-danger" />}
                 statsText={new Date().getFullYear()+1+" Projected Revenue"}
-                statsValue={"$"+Math.floor(Math.random() * 400000 + 1).toFixed(2)}
+                statsValue={"$"+Math.floor(Math.random() * 40000 + 1).toFixed(2)}
                 statsIcon={<i className="fa fa-refresh" />}
                 statsIconText="Updated now"
               />
@@ -56,7 +56,7 @@ class Dashboard extends Component {
               <StatsCard
                 bigIcon={<i className="pe-7s-graph1 text-success" />}
                 statsText={new Date().getFullYear()+2+" Projected Revenue"}
-                statsValue={"$"+Math.floor(Math.random() * 400000 + 1).toFixed(2)}
+                statsValue={"$"+Math.floor(Math.random() * 40000 + 1).toFixed(2)}
                 statsIcon={<i className="fa fa-refresh" />}
                 statsIconText="Updated now"
               />
@@ -65,7 +65,7 @@ class Dashboard extends Component {
               <StatsCard
                 bigIcon={<i className="pe-7s-cash text-info" />}
                 statsText="Total Revenue"
-                statsValue={"$"+Math.floor(Math.random() * 4000000 + 1).toFixed(2)}
+                statsValue={"$"+Math.floor(Math.random() * 400000 + 1).toFixed(2)}
                 statsIcon={<i className="fa fa-refresh" />}
                 statsIconText="Updated now"
               />
@@ -76,7 +76,7 @@ class Dashboard extends Component {
               <Card
                 statsIcon="fa fa-history"
                 id="chartHours"
-                title="John Smith"
+                title="Company Performance"
                 category="Monthly performance"
                 stats="Updated 3 minutes ago"
                 content={
@@ -119,8 +119,8 @@ class Dashboard extends Component {
             <Col md={6}>
               <Card
                 id="chartActivity"
-                title="2014 Sales"
-                category="All products including Taxes"
+                title="John Smith"
+                category="Monthly Performance"
                 stats="Data information certified"
                 statsIcon="fa fa-check"
                 content={
@@ -141,8 +141,8 @@ class Dashboard extends Component {
 
             <Col md={6}>
               <Card
-                title="Tasks"
-                category="Backend development"
+                title="Projects"
+                category="Recent projects added/updated"
                 stats="Updated 3 minutes ago"
                 statsIcon="fa fa-history"
                 content={

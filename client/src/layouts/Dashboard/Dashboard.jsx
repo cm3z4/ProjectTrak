@@ -13,7 +13,7 @@ import dashboardRoutes from "routes/dashboard.jsx";
 class Dashboard extends Component {
   constructor(props) {
     super(props);
-    this.componentDidMount = this.componentDidMount.bind(this);
+    // this.componentDidMount = this.componentDidMount.bind(this);
     this.handleNotificationClick = this.handleNotificationClick.bind(this);
     this.state = {
       _notificationSystem: null
@@ -42,8 +42,7 @@ class Dashboard extends Component {
       title: <span data-notify="icon" className="pe-7s-gift" />,
       message: (
         <div>
-          Welcome to <b>Light Bootstrap Dashboard</b> - a beautiful freebie for
-          every web developer.
+          Test 1
         </div>
       ),
       level: level,
@@ -76,8 +75,7 @@ class Dashboard extends Component {
       title: <span data-notify="icon" className="pe-7s-gift" />,
       message: (
         <div>
-          Welcome to <b>Light Bootstrap Dashboard</b> - a beautiful freebie for
-          every web developer.
+          test 2.
         </div>
       ),
       level: level,

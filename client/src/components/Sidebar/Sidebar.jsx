@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import HeaderLinks from "../Header/HeaderLinks.jsx";
 
 import imagine from "assets/img/refine.jpg";
-import logo from "assets/img/ptrak.svg";
+import logo from "assets/img/projectTrakLogo.png";
 
 import dashboardRoutes from "routes/dashboard.jsx";
 

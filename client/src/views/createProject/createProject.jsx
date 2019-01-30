@@ -189,7 +189,7 @@ class createProject extends Component {
                         <FormGroup controlId="projectDescription">
                           <ControlLabel>Project Description</ControlLabel>
                           <FormControl
-                            name="projectDescription"
+                            name="description"
                             rows="5"
                             componentClass="textarea"
                             bsClass="form-control"
@@ -200,7 +200,7 @@ class createProject extends Component {
                         </FormGroup>
                       </Col>
                     </Row>
-                    <Button bsStyle="info" pullRight fill type="submit">
+                    <Button onClick={this.createFormSubmit} bsStyle="info" pullRight fill type="submit">
                       Create Prospect
                     </Button>
                     <div className="clearfix" />
@@ -209,7 +209,7 @@ class createProject extends Component {
               />
             </Col>
           </Row>
-        </Grid>>
+        </Grid>
       </div>
     );
   }
