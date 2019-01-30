@@ -3,13 +3,23 @@ import { Grid, Row, Col, Table } from "react-bootstrap";
 
 
 import Card from "components/Card/Card.jsx";
-import { thArray, tdArray } from "variables/Variables.jsx";
+import { thArray } from "variables/Variables.jsx";
 import Axios from "axios";
 
 class TableList extends Component {
-  
+
   state = {
-    projects: []
+    projects: [],
+    usableProperties: [
+      "project_number",
+      "salesman",
+      "status",
+      "company_name",
+      "project_description",
+      "estimated_start",
+      "estimated_finish",
+      "estimated_value"
+    ]
   };
 
   componentDidMount() {
@@ -18,10 +28,12 @@ class TableList extends Component {
 
   getProjects() {
     Axios.get("/api/projects")
-      .then(res => {this.setState({ projects: res.data });
-      console.log(this.state.projects)
-  });
-      
+      .then(res => {
+        this.setState({ projects: res.data });
+        console.log(this.state.projects)
+
+      });
+
   }
   render() {
     return (
@@ -44,15 +56,20 @@ class TableList extends Component {
                       </tr>
                     </thead>
                     <tbody>
-                      {tdArray.map((prop, key) => {
-                        return (
-                          <tr key={key}>
-                            {prop.map((prop, key) => {
-                              return <td key={key}>{prop}</td>;
-                            })}
-                          </tr>
-                        );
-                      })}
+                      {
+                        this.state.projects.map((project, key) => {
+                          return (
+                            <tr key={key}>{
+                              this.state.usableProperties.map((property) => {
+                                return <td key={`${property}${key}`}>
+                                  {project[property]}
+                                </td>
+                              })
+                            }
+                            </tr>
+                          )
+                        })
+                      }
                     </tbody>
                   </Table>
                 }

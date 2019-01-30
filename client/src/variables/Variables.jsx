@@ -249,9 +249,10 @@ var style = {
 // // // For tables
 // //
 //
-const thArray = ["P#", "Salesman", "Status", "Company Name", "Project Description"];
+
+const thArray = ["Project ID", "Salesman", "Status", "Company Name", "Project Description","Estimated Start","Estimated Finish", "Estimated Value"];
 const tdArray = [
-  ["1", "Dakota Rice", "$36,738", "Niger", "Oud-Turnhout"],
+  ["P-1234", "Dakota Rice", "$36,738", "Niger", "Oud-Turnhout", "343","343","343"],
   ["2", "Minerva Hooper", "$23,789", "Curaçao", "Sinaai-Waas"],
   ["3", "Sage Rodriguez", "$56,142", "Netherlands", "Baileux"],
   ["4", "Philip Chaney", "$38,735", "Korea, South", "Overland Park"],
