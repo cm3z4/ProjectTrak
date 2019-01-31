@@ -53,6 +53,33 @@ router.get("/projects", (req, res) => {
         .catch(function (err) {
             console.log(err);
         });
-})
+});
+
+router.get('/edit/:id', function (req, res) {
+    models.Project.findOne({ project_number: req.params.id })
+        .exec(function (err, projectNum) {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log(projectNum);
+
+                //   const savingData = {};
+
+                //   savingData.title = projectNum.title;
+                //   savingData.summary = projectNum.summary;
+                //   savingData.link = projectNum.link;
+
+                //   console.log(savingData);
+                //   models.Saved.create(savingData)
+                //     .then(function (confirm) {
+                //       console.log(confirm);
+                //     })
+                //     .catch(function (error) {
+                //       console.log(error);
+                //     });
+                res.redirect('/#/editProject');
+            }
+        });
+});
 
 module.exports = router;
