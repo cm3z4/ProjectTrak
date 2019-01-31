@@ -15,10 +15,10 @@ class TableList extends Component {
       "salesman",
       "status",
       "company_name",
-      "project_description",
       "estimated_start",
       "estimated_finish",
-      "estimated_value"
+      "estimated_value",
+      "project_description"
     ]
   };
 
@@ -42,8 +42,8 @@ class TableList extends Component {
           <Row>
             <Col md={12}>
               <Card
-                title="Company Projects"
-                category="all projects"
+                title="Projects"
+                category=""
                 ctTableFullWidth
                 ctTableResponsive
                 content={
@@ -62,7 +62,7 @@ class TableList extends Component {
                             <tr key={key}>{
                               this.state.usableProperties.map((property) => {
                                 return <td key={`${property}${key}`}>
-                                  {project[property]}
+                                  <a href={"/api/edit/" + project[this.state.usableProperties[0]]}>{project[property]}</a>
                                 </td>
                               })
                             }

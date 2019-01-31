@@ -1,28 +1,41 @@
 const mongoose = require("mongoose");
 const db = require("../models");
 
-// This file empties the project collection and inserts the projects below
+// This file empties the project collection and inserts the projects below.
 
 mongoose.connect(
     process.env.MONGODB_URI ||
-    "mongodb://localhost:27017/pTrak"
+    "mongodb://localhost:27017/project-trak"
 );
 
 const projectSeed = [
     {
-        projectNumber: "P-4321",
+        project_number: "P-1000",
         salesman: "John Smith",
-        project_name: "new",
-        status: "Prospect",
-        company_name: "test",
-        company_address: "test",
-        contact_name: "test",
-        contact_number: "test",
-        contact_email: "test",
+        status: "Won",
+        company_name: "Exxon",
+        company_address: "Test",
+        contact_name: "Test",
+        contact_number: "Test",
+        contact_email: "Test",
         estimated_start: new Date(Date.now()),
         estimated_finish: new Date(Date.now()),
-        estimated_value: 500,
-        discription: "test"
+        estimated_value: 876552,
+        project_description: "Test"
+    },
+    {
+        project_number: "P-1001",
+        salesman: "John Smith",
+        status: "Won",
+        company_name: "Valero",
+        company_address: "Test",
+        contact_name: "Test",
+        contact_number: "Test",
+        contact_email: "Test",
+        estimated_start: new Date(Date.now()),
+        estimated_finish: new Date(Date.now()),
+        estimated_value: 256125,
+        project_description: "Test"
     }
 ];
 
@@ -37,3 +50,4 @@ db.Project
         console.error(err);
         process.exit(1);
     });
+    

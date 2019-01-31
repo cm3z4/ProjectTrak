@@ -50,7 +50,6 @@ class createProject extends Component {
   };
 
   handleInputChange = e => {
-    //console.log(this.state);
     const { name, value } = e.target;
     this.setState({
       [name]: value
@@ -189,7 +188,7 @@ class createProject extends Component {
                         <FormGroup controlId="projectDescription">
                           <ControlLabel>Project Description</ControlLabel>
                           <FormControl
-                            name="description"
+                            name="projectDescription"
                             rows="5"
                             componentClass="textarea"
                             bsClass="form-control"
