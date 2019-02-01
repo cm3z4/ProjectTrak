@@ -40,7 +40,7 @@ router.post("/create", (req, res) => {
 
 });
 
-// get all projects for project-trak db
+// Get all projects for project-trak db
 router.get("/projects", (req, res) => {
     console.log("the /project route is working");
     models.Project
@@ -55,6 +55,18 @@ router.get("/projects", (req, res) => {
         });
 });
 
+let projectId = { projectId: "P-1000" };
+router.get('/projectid', function (req, res) {
+    console.log(projectId.projectId);
+    res.json(projectId);
+});
+
+router.get('/passid/:id', function (req, res) {
+    console.log(req.params.id)
+    projectId.projectId = req.params.id;
+    res.redirect('/#/editProject');
+});
+
 router.get('/edit/:id', function (req, res) {
     models.Project.findOne({ project_number: req.params.id })
         .exec(function (err, projectNum) {
@@ -62,22 +74,7 @@ router.get('/edit/:id', function (req, res) {
                 console.log(err);
             } else {
                 console.log(projectNum);
-
-                //   const savingData = {};
-
-                //   savingData.title = projectNum.title;
-                //   savingData.summary = projectNum.summary;
-                //   savingData.link = projectNum.link;
-
-                //   console.log(savingData);
-                //   models.Saved.create(savingData)
-                //     .then(function (confirm) {
-                //       console.log(confirm);
-                //     })
-                //     .catch(function (error) {
-                //       console.log(error);
-                //     });
-                res.redirect('/#/editProject');
+                res.json(projectNum);
             }
         });
 });
