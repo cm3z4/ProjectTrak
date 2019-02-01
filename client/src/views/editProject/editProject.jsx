@@ -14,7 +14,7 @@ import API from "../../utils/API";
 import Button from "components/CustomButton/CustomButton.jsx";
 
 
-class createProject extends Component {
+class editProject extends Component {
 
   state = {
     projectNumber: "",
@@ -33,7 +33,7 @@ class createProject extends Component {
 
   createFormSubmit = e => {
     e.preventDefault();
-    API.createProject({
+    API.editProject({
       project_number: this.state.projectNumber,
       salesman: this.state.salesman,
       status: this.state.status,
@@ -200,7 +200,7 @@ class createProject extends Component {
                       </Col>
                     </Row>
                     <Button onClick={this.createFormSubmit} bsStyle="info" pullRight fill type="submit">
-                      Create Prospect
+                      Edit Project
                     </Button>
                     <div className="clearfix" />
                   </form>
@@ -214,4 +214,4 @@ class createProject extends Component {
   }
 }
 
-export default createProject;
+export default editProject;
