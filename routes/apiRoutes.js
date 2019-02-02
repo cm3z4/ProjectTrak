@@ -32,7 +32,7 @@ router.post("/create", (req, res) => {
 
     models.Project.create(data)
         .then(function (dbProject) {
-            console.log(dbProject);
+            //console.log(dbProject);
         })
         .catch(function (err) {
             console.log(err);
@@ -48,13 +48,13 @@ router.post("/update", (req, res) => {
     let data = req.body;
     console.log(data);
 
-    // models.Project.create(data)
-    //     .then(function (dbProject) {
-    //         console.log(dbProject);
-    //     })
-    //     .catch(function (err) {
-    //         console.log(err);
-    //     });
+    models.Project.findOneAndUpdate({ project_number: data.project_number }, data, { new: true })
+        .then(function (updatedProject) {
+            console.log(updatedProject);
+        })
+        .catch(function (err) {
+            console.log(err);
+        });
 
 });
 

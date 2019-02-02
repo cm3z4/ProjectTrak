@@ -34,8 +34,7 @@ const projectSchema = new Schema({
   actual_pst_start: { type: Date, required: false },
   actual_end: { type: Date, required: false },
   actual_hours: { type: Number, required: false },
-  actual_value: { type: Number, required: false },
-
+  actual_value: { type: Number, required: false }
 });
 
 const Project = mongoose.model("Project", projectSchema);

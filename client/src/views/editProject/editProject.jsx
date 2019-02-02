@@ -32,7 +32,7 @@ class editProject extends Component {
     estimatedValue: 0,
     projectDescription: "",
     estimator: "",
-    revisionNumber: "",
+    revisionNumber: 1,
     type: "",
     bidDue: "",
     bidSubmitted: "",
@@ -54,7 +54,7 @@ class editProject extends Component {
     actualValue: 0
   };
 
-  editFormSubmit = e => {
+  updateFormSubmit = e => {
     e.preventDefault();
     API.updateProject({
       project_number: this.state.projectNumber,
@@ -70,7 +70,7 @@ class editProject extends Component {
       estimated_value: this.state.estimatedValue,
       project_description: this.state.projectDescription,
       estimator: this.state.estimator,
-      revision_number: this.state.revsionNumber,
+      revision_number: this.state.revisionNumber,
       type: this.state.type,
       bid_due: this.state.bidDue,
       bid_submitted: this.state.bidSubmitted,
@@ -84,8 +84,8 @@ class editProject extends Component {
       proposed_value: this.state.proposedValue,
       estimator_notes: this.state.estimatorNotes,
       actual_pln_start: this.state.actualPlnStart,
-      actual_pre_start: this.state.acutalPreStart,
-      actual_tar_start: this.state.acutalTarStart,
+      actual_pre_start: this.state.actualPreStart,
+      actual_tar_start: this.state.actualTarStart,
       actual_pst_start: this.state.actualPstStart,
       actual_end: this.state.actualEnd,
       actual_hours: this.state.actualHours,
@@ -106,6 +106,21 @@ class editProject extends Component {
         // Then, grab data from the database filtered with the project_number.
         Axios.get("/api/edit/" + projectId.data.projectNum)
           .then(projectInfo => {
+
+            let bidDue = projectInfo.data.bid_due === null ? "" : moment(projectInfo.data.bid_due).format("YYYY-MM-DD");
+            let bidSubmitted = projectInfo.data.bid_submitted === null ? "" : moment(projectInfo.data.bid_submitted).format("YYYY-MM-DD");
+            let estimatedAward = projectInfo.data.estimated_award === null ? "" : moment(projectInfo.data.estimated_award).format("YYYY-MM-DD");
+            let plnStart = projectInfo.data.pln_start === null ? "" : moment(projectInfo.data.pln_start).format("YYYY-MM-DD");
+            let preStart = projectInfo.data.pre_start === null ? "" : moment(projectInfo.data.pre_start).format("YYYY-MM-DD");
+            let tarStart = projectInfo.data.tar_start === null ? "" : moment(projectInfo.data.tar_start).format("YYYY-MM-DD");
+            let pstStart = projectInfo.data.pst_start === null ? "" : moment(projectInfo.data.pst_start).format("YYYY-MM-DD");
+            let proposedEnd = projectInfo.data.proposed_end === null ? "" : moment(projectInfo.data.proposed_end).format("YYYY-MM-DD");
+            let actualPlnStart = projectInfo.data.actual_pln_start === null ? "" : moment(projectInfo.data.actual_pln_start).format("YYYY-MM-DD");
+            let actualPreStart = projectInfo.data.actual_pre_start === null ? "" : moment(projectInfo.data.actual_pre_start).format("YYYY-MM-DD");
+            let actualTarStart = projectInfo.data.actual_tar_start === null ? "" : moment(projectInfo.data.actual_tar_start).format("YYYY-MM-DD");
+            let actualPstStart = projectInfo.data.actual_pst_start === null ? "" : moment(projectInfo.data.actual_pst_start).format("YYYY-MM-DD");
+            let actualEnd = projectInfo.data.actual_end === null ? "" : moment(projectInfo.data.actual_end).format("YYYY-MM-DD");
+
             this.setState({
               projectNumber: projectInfo.data.project_number,
               salesman: projectInfo.data.salesman,
@@ -122,22 +137,22 @@ class editProject extends Component {
               estimator: projectInfo.data.estimator,
               revisionNumber: projectInfo.data.revision_number,
               type: projectInfo.data.type,
-              bidDue: moment(projectInfo.data.bid_due).format("YYYY-MM-DD"),
-              bidSubmitted: moment(projectInfo.data.bid_submitted).format("YYYY-MM-DD"),
-              estimatedAward: moment(projectInfo.data.estimated_award).format("YYYY-MM-DD"),
-              plnStart: moment(projectInfo.data.pln_start).format("YYYY-MM-DD"),
-              preStart: moment(projectInfo.data.pre_start).format("YYYY-MM-DD"),
-              tarStart: moment(projectInfo.data.tar_start).format("YYYY-MM-DD"),
-              pstStart: moment(projectInfo.data.pst_start).format("YYYY-MM-DD"),
-              proposedEnd: moment(projectInfo.data.proposed_end).format("YYYY-MM-DD"),
+              bidDue: bidDue,
+              bidSubmitted: bidSubmitted,
+              estimatedAward: estimatedAward,
+              plnStart: plnStart,
+              preStart: preStart,
+              tarStart: tarStart,
+              pstStart: pstStart,
+              proposedEnd: proposedEnd,
               proposedHours: projectInfo.data.proposed_hours,
               proposedValue: projectInfo.data.proposed_value,
               estimatorNotes: projectInfo.data.estimator_notes,
-              actualPlnStart: moment(projectInfo.data.actual_pln_start).format("YYYY-MM-DD"),
-              actualPreStart: moment(projectInfo.data.actual_pre_start).format("YYYY-MM-DD"),
-              actualTarStart: moment(projectInfo.data.actual_tar_start).format("YYYY-MM-DD"),
-              actualPstStart: moment(projectInfo.data.actual_pst_start).format("YYYY-MM-DD"),
-              actualEnd: moment(projectInfo.data.actual_end).format("YYYY-MM-DD"),
+              actualPlnStart: actualPlnStart,
+              actualPreStart: actualPreStart,
+              actualTarStart: actualTarStart,
+              actualPstStart: actualPstStart,
+              actualEnd: actualEnd,
               actualHours: projectInfo.data.actual_hours,
               actualValue: projectInfo.data.actual_value
             });
@@ -289,7 +304,7 @@ class editProject extends Component {
                         </FormGroup>
                       </Col>
                     </Row>
-                    <Col md={12}><Button onClick={this.editFormSubmit} bsStyle="info" pullRight fill type="submit">
+                    <Col md={12}><Button onClick={this.updateFormSubmit} bsStyle="info" pullRight fill type="submit">
                       Saves Changes
                     </Button></Col>
                     <div className="clearfix" />
@@ -344,7 +359,7 @@ class editProject extends Component {
                           onChange: this.handleInputChange
                         },
                         {
-                          name: "bidsubmitted",
+                          name: "bidSubmitted",
                           label: "Bid Submitted",
                           type: "date",
                           bsClass: "form-control",
@@ -445,7 +460,7 @@ class editProject extends Component {
                         </FormGroup>
                       </Col>
                     </Row>
-                    <Col md={12}><Button onClick={this.editFormSubmit} bsStyle="info" pullRight fill type="submit">
+                    <Col md={12}><Button onClick={this.updateFormSubmit} bsStyle="info" pullRight fill type="submit">
                       Saves Changes
                     </Button></Col>
                     <div className="clearfix" />
@@ -530,7 +545,7 @@ class editProject extends Component {
                         }
                       ]}
                     />
-                    <Col md={12}><Button onClick={this.editFormSubmit} bsStyle="info" pullRight fill type="submit">
+                    <Col md={12}><Button onClick={this.updateFormSubmit} bsStyle="info" pullRight fill type="submit">
                       Saves Changes
                     </Button></Col>
                     <div className="clearfix" />
