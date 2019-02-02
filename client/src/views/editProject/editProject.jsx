@@ -7,6 +7,7 @@ import {
   ControlLabel,
   FormControl
 } from "react-bootstrap";
+import moment from 'moment'
 
 import { Card } from "components/Card/Card.jsx";
 import { FormInputs } from "components/FormInputs/FormInputs.jsx";
@@ -18,9 +19,9 @@ import Axios from "axios";
 class editProject extends Component {
 
   state = {
-    projectNumber: "",
-    salesman: "John Smith",
-    status: "Prospect",
+    projectNumber: "Test",
+    salesman: "",
+    status: "",
     companyName: "",
     companyAddress: "",
     contactName: "",
@@ -32,7 +33,7 @@ class editProject extends Component {
     projectDescription: ""
   };
 
-  createFormSubmit = e => {
+  editFormSubmit = e => {
     e.preventDefault();
     API.editProject({
       project_number: this.state.projectNumber,
@@ -63,11 +64,27 @@ class editProject extends Component {
 
   getProjectData() {
     Axios.get("/api/projectid")
-      .then(res => {
-        console.log("projectid" + res.data.projectId);
-        Axios.get("/api/edit/" + res.data.projectId)
-          .then(data => {
-            console.log("passid" + data.data);
+      .then(a1 => {
+        console.log("projectid " + a1.data.projectNum);
+        Axios.get("/api/edit/" + a1.data.projectNum)
+          .then(projectData => {
+            console.log("/edit " + projectData.data.project_number);
+            this.setState({
+              projectNumber: projectData.data.project_number,
+              salesman: projectData.data.salesman,
+              status: projectData.data.status,
+              companyName: projectData.data.company_name,
+              companyAddress: projectData.data.company_address,
+              contactName: projectData.data.contact_name,
+              contactNumber: projectData.data.contact_number,
+              contactEmail: projectData.data.contact_email,
+              estimatedStart: moment(projectData.data.estimated_start).format("YYYY-MM-DD"),
+              estimatedFinish: moment(projectData.data.estimated_finish).format("YYYY-MM-DD"),
+              estimatedValue: projectData.data.estimated_value,
+              projectDescription: projectData.data.project_description
+            })
+            console.log(this.state.projectNumber);
+            console.log(this.state.salesman);
           });
 
       });
@@ -81,30 +98,28 @@ class editProject extends Component {
           {/* Sales form. */}
           <Row>
             <Col md={12}>
-
               <Card
                 title="Sales"
                 content={
-                  <form onSubmit={this.createFormSubmit}>
-
+                  <form>
                     {/* 1ST ROW --> Project Number --> Salesman --> Status. */}
                     <Row>
                       <Col md={4}>
                         <FormGroup controlId="projectNumber">
                           <ControlLabel>Project Number</ControlLabel>
-                          <FormControl name="projectNumber" type="text" placeholder="P-XXXX" onChange={this.handleInputChange}
+                          <FormControl name="projectNumber" type="text" placeholder="" value={this.state.projectNumber} disabled="true" onChange={this.handleInputChange.bind(this)}
                           />
                         </FormGroup></Col>
                       <Col md={4}>
                         <FormGroup controlId="salesman">
                           <ControlLabel>Salesman</ControlLabel>
-                          <FormControl name="salesman" type="text" placeholder="John Smith" defaultValue="John Smith" disabled="true" onChange={this.handleInputChange}
+                          <FormControl name="salesman" type="text" placeholder="" value={this.state.salesman} onChange={this.handleInputChange}
                           />
                         </FormGroup></Col>
                       <Col md={4}>
                         <FormGroup controlId="status" type="text">
                           <ControlLabel>Status</ControlLabel>
-                          <FormControl name="status" componentClass="select" onChange={this.handleInputChange}>
+                          <FormControl name="status" value={this.state.status} componentClass="select" onChange={this.handleInputChange}>
                             <option value="Prospect">Prospect</option>
                             <option value="Bidding">Bidding</option>
                             <option value="Pending">Pending</option>
@@ -123,7 +138,7 @@ class editProject extends Component {
                           type: "text",
                           bsClass: "form-control",
                           placeholder: "Exxon Mobil",
-                          defaultValue: "",
+                          value: this.state.companyName,
                           onChange: this.handleInputChange
                         },
                         {
@@ -132,7 +147,7 @@ class editProject extends Component {
                           type: "text",
                           bsClass: "form-control",
                           placeholder: "3525 Decker Dr, Baytown, TX 77520",
-                          defaultValue: "",
+                          value: this.state.companyAddress,
                           onChange: this.handleInputChange
                         }
                       ]}
@@ -147,7 +162,7 @@ class editProject extends Component {
                           type: "text",
                           bsClass: "form-control",
                           placeholder: "John Smith",
-                          defaultValue: "",
+                          value: this.state.contactName,
                           onChange: this.handleInputChange
                         },
                         {
@@ -156,7 +171,7 @@ class editProject extends Component {
                           type: "text",
                           bsClass: "form-control",
                           placeholder: "(555) 555-5555 ",
-                          defaultValue: "",
+                          value: this.state.contactNumber,
                           onChange: this.handleInputChange
                         },
                         {
@@ -165,7 +180,7 @@ class editProject extends Component {
                           type: "email",
                           bsClass: "form-control",
                           placeholder: "contact@exxon.com",
-                          defaultValue: "",
+                          value: this.state.contactEmail,
                           onChange: this.handleInputChange
                         }
                       ]}
@@ -180,7 +195,7 @@ class editProject extends Component {
                           type: "date",
                           bsClass: "form-control",
                           placeholder: "",
-                          defaultValue: "",
+                          value: this.state.estimatedStart,
                           onChange: this.handleInputChange
                         },
                         {
@@ -189,7 +204,7 @@ class editProject extends Component {
                           type: "date",
                           bsClass: "form-control",
                           placeholder: "",
-                          defaultValue: "",
+                          value: this.state.estimatedFinish,
                           onChange: this.handleInputChange
                         },
                         {
@@ -198,7 +213,7 @@ class editProject extends Component {
                           type: "number",
                           bsClass: "form-control",
                           placeholder: "",
-                          defaultValue: 0,
+                          value: this.state.estimatedValue,
                           onChange: this.handleInputChange
                         }
                       ]}
@@ -213,14 +228,14 @@ class editProject extends Component {
                             rows="5"
                             componentClass="textarea"
                             bsClass="form-control"
-                            placeholder="Add a basic description of the project."
-                            defaultValue=""
+                            placeholder=""
+                            value={this.state.projectDescription}
                             onChange={this.handleInputChange}
                           />
                         </FormGroup>
                       </Col>
                     </Row>
-                    <Col md={12}><Button onClick={this.createFormSubmit} bsStyle="info" pullRight fill type="submit">
+                    <Col md={12}><Button onClick={this.editFormSubmit} bsStyle="info" pullRight fill type="submit">
                       Saves Changes
                     </Button></Col>
                     <div className="clearfix" />
@@ -229,14 +244,13 @@ class editProject extends Component {
               />
             </Col>
           </Row>
-
           {/* Estimating form. */}
           <Row>
             <Col md={12}>
               <Card
                 title="Estimating"
                 content={
-                  <form onSubmit={this.createFormSubmit}>
+                  <form>
                     {/* 1ST ROW --> Estimator --> Revised? --> Type. */}
                     <Row>
                       <Col md={4}>
@@ -389,7 +403,7 @@ class editProject extends Component {
                         </FormGroup>
                       </Col>
                     </Row>
-                    <Col md={12}><Button onClick={this.createFormSubmit} bsStyle="info" pullRight fill type="submit">
+                    <Col md={12}><Button onClick={this.editFormSubmit} bsStyle="info" pullRight fill type="submit">
                       Saves Changes
                     </Button></Col>
                     <div className="clearfix" />
@@ -405,7 +419,7 @@ class editProject extends Component {
               <Card
                 title="Operations"
                 content={
-                  <form onSubmit={this.createFormSubmit}>
+                  <form>
                     <FormInputs
                       ncols={["col-md-3", "col-md-3", "col-md-3", "col-md-3"]}
                       proprieties={[
@@ -480,7 +494,7 @@ class editProject extends Component {
                         }
                       ]}
                     />
-                    <Col md={12}><Button onClick={this.createFormSubmit} bsStyle="info" pullRight fill type="submit">
+                    <Col md={12}><Button onClick={this.editFormSubmit} bsStyle="info" pullRight fill type="submit">
                       Saves Changes
                     </Button></Col>
                     <div className="clearfix" />
