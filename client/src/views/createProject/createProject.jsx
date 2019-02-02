@@ -28,7 +28,28 @@ class createProject extends Component {
     estimatedStart: "",
     estimatedFinish: "",
     estimatedValue: 0,
-    projectDescription: ""
+    projectDescription: "",
+    estimator: "",
+    revisionNumber: "",
+    type: "",
+    bidDue: "",
+    bidSubmitted: "",
+    estimatedAward: "",
+    plnStart: "",
+    preStart: "",
+    tarStart: "",
+    pstStart: "",
+    proposedEnd: "",
+    proposedHours: 0,
+    proposedValue: 0,
+    estimatorNotes: "",
+    actualPlnStart: "",
+    actualPreStart: "",
+    actualTarStart: "",
+    actualPstStart: "",
+    actualEnd: "",
+    actualHours: 0,
+    actualValue: 0
   };
 
   createFormSubmit = e => {
@@ -45,7 +66,28 @@ class createProject extends Component {
       estimated_start: this.state.estimatedStart,
       estimated_finish: this.state.estimatedFinish,
       estimated_value: this.state.estimatedValue,
-      project_description: this.state.projectDescription
+      project_description: this.state.projectDescription,
+      estimator: this.state.estimator,
+      revision_number: this.state.revsionNumber,
+      type: this.state.type,
+      bid_due: this.state.bidDue,
+      bid_submitted: this.state.bidSubmitted,
+      estimated_award: this.state.estimatedAward,
+      pln_start: this.state.plnStart,
+      pre_start: this.state.preStart,
+      tar_start: this.state.tarStart,
+      pst_start: this.state.pstStart,
+      proposed_end: this.state.proposedEnd,
+      proposed_hours: this.state.proposedHours,
+      proposed_value: this.state.proposedValue,
+      estimator_notes: this.state.estimatorNotes,
+      actual_pln_start: this.state.actualPlnStart,
+      actual_pre_start: this.state.acutalPreStart,
+      actual_tar_start: this.state.acutalTarStart,
+      actual_pst_start: this.state.actualPstStart,
+      actual_end: this.state.actualEnd,
+      actual_hours: this.state.actualHours,
+      actual_value: this.state.actualValue
     });
   };
 

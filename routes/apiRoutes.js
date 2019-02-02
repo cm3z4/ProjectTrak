@@ -40,6 +40,24 @@ router.post("/create", (req, res) => {
 
 });
 
+// Create a project and store in project-trak db.
+router.post("/update", (req, res) => {
+
+    console.log("The /update route is working.");
+
+    let data = req.body;
+    console.log(data);
+
+    // models.Project.create(data)
+    //     .then(function (dbProject) {
+    //         console.log(dbProject);
+    //     })
+    //     .catch(function (err) {
+    //         console.log(err);
+    //     });
+
+});
+
 // Get all projects for project-trak db
 router.get("/projects", (req, res) => {
     console.log("The /projects route is working.");
