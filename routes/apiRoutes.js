@@ -58,6 +58,20 @@ router.post("/update", (req, res) => {
 
 });
 
+// Create a project and store in project-trak db.
+router.post("/delete", (req, res) => {
+
+    console.log("The /delete route is working.");
+
+    let data = req.body;
+    console.log(data);
+
+    models.Project.findOneAndDelete({ project_number: data.project_number })
+        .catch(function (err) {
+            console.log(err);
+        });
+});
+
 // Get all projects for project-trak db
 router.get("/projects", (req, res) => {
     console.log("The /projects route is working.");

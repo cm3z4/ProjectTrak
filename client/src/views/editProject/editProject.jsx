@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from 'react-router-dom'
 import {
   Grid,
   Row,
@@ -14,6 +15,8 @@ import { FormInputs } from "components/FormInputs/FormInputs.jsx";
 import API from "../../utils/API";
 import Button from "components/CustomButton/CustomButton.jsx";
 import Axios from "axios";
+import NotificationSystem from "react-notification-system";
+import { style } from "variables/Variables.jsx";
 
 
 class editProject extends Component {
@@ -51,7 +54,8 @@ class editProject extends Component {
     actualPstStart: "",
     actualEnd: "",
     actualHours: 0,
-    actualValue: 0
+    actualValue: 0,
+    deleted: false
   };
 
   updateFormSubmit = e => {
@@ -91,6 +95,50 @@ class editProject extends Component {
       actual_hours: this.state.actualHours,
       actual_value: this.state.actualValue
     });
+
+    // Create Saved Changes notification.
+    let _notificationSystem = this.refs.notificationSystem;
+    this.setState({ _notificationSystem: this.refs.notificationSystem });
+
+    _notificationSystem.addNotification({
+      title: <span data-notify="icon" className="pe-7s-check" />,
+      message: (
+        <div>
+          Saved Changes
+            </div>
+      ),
+      level: "success",
+      position: "tc",
+      autoDismiss: 3
+    });
+  };
+
+  deleteProjectSubmit = e => {
+    e.preventDefault();
+    API.deleteProject({
+      project_number: this.state.projectNumber,
+    });
+
+    // Create Project Deleted notification.
+    let _notificationSystem = this.refs.notificationSystem;
+    this.setState({ _notificationSystem: this.refs.notificationSystem });
+
+    _notificationSystem.addNotification({
+      title: <span data-notify="icon" className="pe-7s-check" />,
+      message: (
+        <div>
+          Project Deleted
+            </div>
+      ),
+      level: "error",
+      position: "tc",
+      autoDismiss: 3
+    });
+    
+    setTimeout(() => {
+      this.setState({ deleted: true });
+    }, 3500);
+
   };
 
   // Call getProjects() after render().
@@ -102,11 +150,13 @@ class editProject extends Component {
   getProjectData() {
     Axios.get("/api/projectid")
       .then(projectId => {
-        console.log("projectid " + projectId.data.projectNum);
+        //console.log("projectid " + projectId.data.projectNum);
         // Then, grab data from the database filtered with the project_number.
         Axios.get("/api/edit/" + projectId.data.projectNum)
           .then(projectInfo => {
 
+            let estimatedStart = projectInfo.data.estimated_start === null ? "" : moment(projectInfo.data.estimated_start).format("YYYY-MM-DD");
+            let estimatedFinish = projectInfo.data.estimated_finish === null ? "" : moment(projectInfo.data.estimated_finish).format("YYYY-MM-DD");
             let bidDue = projectInfo.data.bid_due === null ? "" : moment(projectInfo.data.bid_due).format("YYYY-MM-DD");
             let bidSubmitted = projectInfo.data.bid_submitted === null ? "" : moment(projectInfo.data.bid_submitted).format("YYYY-MM-DD");
             let estimatedAward = projectInfo.data.estimated_award === null ? "" : moment(projectInfo.data.estimated_award).format("YYYY-MM-DD");
@@ -130,8 +180,8 @@ class editProject extends Component {
               contactName: projectInfo.data.contact_name,
               contactNumber: projectInfo.data.contact_number,
               contactEmail: projectInfo.data.contact_email,
-              estimatedStart: moment(projectInfo.data.estimated_start).format("YYYY-MM-DD"),
-              estimatedFinish: moment(projectInfo.data.estimated_finish).format("YYYY-MM-DD"),
+              estimatedStart: estimatedStart,
+              estimatedFinish: estimatedFinish,
               estimatedValue: projectInfo.data.estimated_value,
               projectDescription: projectInfo.data.project_description,
               estimator: projectInfo.data.estimator,
@@ -169,10 +219,24 @@ class editProject extends Component {
   };
 
   render() {
+
+    let deleteBtn = {
+      marginBottom: "24px"
+    };
+
+    if (this.state.deleted === true) {
+      return <Redirect to='/projects' />
+    };
+
     return (
       <div className="content">
+        <NotificationSystem ref="notificationSystem" style={style} />
         <Grid fluid>
           {/* Sales form. */}
+          <Row>
+            <Col md={12}><Button onClick={this.deleteProjectSubmit} bsStyle="danger" pullRight fill type="submit" style={deleteBtn}>
+              Delete Project</Button></Col>
+          </Row>
           <Row>
             <Col md={12}>
               <Card
@@ -187,12 +251,15 @@ class editProject extends Component {
                           <FormControl name="projectNumber" type="text" value={this.state.projectNumber} disabled="true" onChange={this.handleInputChange.bind(this)}
                           />
                         </FormGroup></Col>
-                      <Col md={4}>
-                        <FormGroup controlId="salesman">
+                        <Col md={4}>
+                        <FormGroup controlId="salesman" type="text">
                           <ControlLabel>Salesman</ControlLabel>
-                          <FormControl name="salesman" type="text" value={this.state.salesman} onChange={this.handleInputChange}
-                          />
-                        </FormGroup></Col>
+                          <FormControl name="salesman" componentClass="select" value={this.state.salesman} onChange={this.handleInputChange}>
+                            <option value=""></option>
+                            <option value="Mark Ledbetter">Mark Ledbetter</option>
+                            <option value="Tim Cunningham">Tim Cunningham</option>
+                            <option value="Thomas Mason">Thomas Mason</option>
+                          </FormControl></FormGroup></Col>
                       <Col md={4}>
                         <FormGroup controlId="status" >
                           <ControlLabel>Status</ControlLabel>
@@ -330,7 +397,6 @@ class editProject extends Component {
                             <option value="Jerry Barnes">Jerry Barnes</option>
                             <option value="James Kimble">James Kimble</option>
                           </FormControl></FormGroup></Col>
-
                       <Col md={4}>
                         <FormGroup controlId="revisionNumber">
                           <ControlLabel>Revision Number</ControlLabel>

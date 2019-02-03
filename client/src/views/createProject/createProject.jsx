@@ -18,7 +18,7 @@ class createProject extends Component {
 
   state = {
     projectNumber: "",
-    salesman: "John Smith",
+    salesman: "",
     status: "Prospect",
     companyName: "",
     companyAddress: "",
@@ -117,11 +117,14 @@ class createProject extends Component {
                           />
                         </FormGroup></Col>
                       <Col md={4}>
-                        <FormGroup controlId="salesman">
+                        <FormGroup controlId="salesman" type="text">
                           <ControlLabel>Salesman</ControlLabel>
-                          <FormControl name="salesman" type="text" placeholder="John Smith" defaultValue="John Smith" disabled="true" onChange={this.handleInputChange}
-                          />
-                        </FormGroup></Col>
+                          <FormControl name="salesman" componentClass="select" value={this.state.salesman} onChange={this.handleInputChange}>
+                            <option value=""></option>
+                            <option value="Mark Ledbetter">Mark Ledbetter</option>
+                            <option value="Tim Cunningham">Tim Cunningham</option>
+                            <option value="Thomas Mason">Thomas Mason</option>
+                          </FormControl></FormGroup></Col>
                       <Col md={4}>
                         <FormGroup controlId="status" type="text">
                           <ControlLabel>Status</ControlLabel>

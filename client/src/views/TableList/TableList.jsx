@@ -30,8 +30,7 @@ class TableList extends Component {
     Axios.get("/api/projects")
       .then(res => {
         this.setState({ projects: res.data });
-        console.log(this.state.projects)
-
+        //console.log(this.state.projects)
       });
   };
 
@@ -79,7 +78,7 @@ class TableList extends Component {
         </Grid>
       </div>
     );
-  }
-}
+  };
+};
 
 export default TableList;
