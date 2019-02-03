@@ -24,17 +24,16 @@ class TableList extends Component {
 
   componentDidMount() {
     this.getProjects();
-  }
+  };
 
   getProjects() {
     Axios.get("/api/projects")
       .then(res => {
         this.setState({ projects: res.data });
-        console.log(this.state.projects)
-
+        //console.log(this.state.projects)
       });
+  };
 
-  }
   render() {
     return (
       <div className="content">
@@ -62,7 +61,7 @@ class TableList extends Component {
                             <tr key={key}>{
                               this.state.usableProperties.map((property) => {
                                 return <td key={`${property}${key}`}>
-                                  <a href={"/api/edit/" + project[this.state.usableProperties[0]]}>{project[property]}</a>
+                                  <a href={"/api/passid/" + project[this.state.usableProperties[0]]}>{project[property]}</a>
                                 </td>
                               })
                             }
@@ -79,7 +78,7 @@ class TableList extends Component {
         </Grid>
       </div>
     );
-  }
-}
+  };
+};
 
 export default TableList;

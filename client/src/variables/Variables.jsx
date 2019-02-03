@@ -250,7 +250,7 @@ var style = {
 // //
 //
 
-const thArray = ["Project ID", "Salesman", "Status", "Company Name", "Estimated Start","Estimated Finish", "Estimated Value", "Project Description"];
+const thArray = ["Project ID", "Salesman", "Status", "Company Name", "Estimated Start", "Estimated Finish", "Estimated Value", "Project Description"];
 
 //
 // //
@@ -494,9 +494,9 @@ var dataSales = {
     "Dec"
   ],
   series: [
-    [455,656,498,396,556,554,456,321,426,521,452,684],
-    [365,233,456,324,684,426,152,489,426,589,674,365],
-    [122,156,178,156,145,165,165,145,154,178,154,254]
+    [455, 656, 498, 396, 556, 554, 456, 321, 426, 521, 452, 684],
+    [365, 233, 456, 324, 684, 426, 152, 489, 426, 589, 674, 365],
+    [122, 156, 178, 156, 145, 165, 165, 145, 154, 178, 154, 254]
   ]
 };
 var optionsSales = {
@@ -520,7 +520,7 @@ var responsiveSales = [
     "screen and (max-width: 640px)",
     {
       axisX: {
-        labelInterpolationFnc: function(value) {
+        labelInterpolationFnc: function (value) {
           return value[0];
         }
       }
@@ -567,7 +567,7 @@ var responsiveBar = [
     {
       seriesBarDistance: 5,
       axisX: {
-        labelInterpolationFnc: function(value) {
+        labelInterpolationFnc: function (value) {
           return value[0];
         }
       }
@@ -575,7 +575,7 @@ var responsiveBar = [
   ]
 ];
 var legendBar = {
-  names: ["Wins", "Loss" ,"Pending"],
+  names: ["Wins", "Loss", "Pending"],
   types: ["info", "Danger", "warning"]
 };
 
