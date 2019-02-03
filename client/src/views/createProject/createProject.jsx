@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from 'react-router-dom'
 import {
   Grid,
   Row,
@@ -12,6 +13,8 @@ import { Card } from "components/Card/Card.jsx";
 import { FormInputs } from "components/FormInputs/FormInputs.jsx";
 import API from "../../utils/API";
 import Button from "components/CustomButton/CustomButton.jsx";
+import NotificationSystem from "react-notification-system";
+import { style } from "variables/Variables.jsx";
 
 
 class createProject extends Component {
@@ -49,7 +52,8 @@ class createProject extends Component {
     actualPstStart: null,
     actualEnd: null,
     actualHours: 0,
-    actualValue: 0
+    actualValue: 0,
+    created: false
   };
 
   createFormSubmit = e => {
@@ -89,6 +93,26 @@ class createProject extends Component {
       actual_hours: this.state.actualHours,
       actual_value: this.state.actualValue
     });
+
+    // Create Project Created notification.
+    let _notificationSystem = this.refs.notificationSystem;
+    this.setState({ _notificationSystem: this.refs.notificationSystem });
+
+    _notificationSystem.addNotification({
+      title: <span data-notify="icon" className="pe-7s-check" />,
+      message: (
+        <div>
+          Project Created
+          </div>
+      ),
+      level: "success",
+      position: "tc",
+      autoDismiss: 3
+    });
+
+    setTimeout(() => {
+      this.setState({ created: true });
+    }, 3250);
   };
 
   handleInputChange = e => {
@@ -99,8 +123,14 @@ class createProject extends Component {
   };
 
   render() {
+
+    if (this.state.created === true) {
+      return <Redirect to='/projects' />
+    };
+
     return (
       <div className="content">
+        <NotificationSystem ref="notificationSystem" style={style} />
         <Grid fluid>
           <Row>
             <Col md={12}>

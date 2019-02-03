@@ -137,7 +137,7 @@ class editProject extends Component {
     
     setTimeout(() => {
       this.setState({ deleted: true });
-    }, 3500);
+    }, 3250);
 
   };
 
