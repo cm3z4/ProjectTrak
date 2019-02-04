@@ -24,7 +24,8 @@ const dashboardRoutes = [
   },
   {
     path: "/editProject",
-    component: editProject
+    component: editProject,
+    invisible: true
   },
   {
     redirect: true,
