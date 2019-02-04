@@ -176,7 +176,7 @@ class createProject extends Component {
                           label: "Company Name",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "Exxon Mobil",
+                          placeholder: "",
                           defaultValue: "",
                           onChange: this.handleInputChange
                         },
@@ -185,7 +185,7 @@ class createProject extends Component {
                           label: "Company Address",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "3525 Decker Dr, Baytown, TX 77520",
+                          placeholder: "",
                           defaultValue: "",
                           onChange: this.handleInputChange
                         }
@@ -200,7 +200,7 @@ class createProject extends Component {
                           label: "Contact Name",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "John Smith",
+                          placeholder: "",
                           defaultValue: "",
                           onChange: this.handleInputChange
                         },
@@ -209,7 +209,7 @@ class createProject extends Component {
                           label: "Contact Number",
                           type: "text",
                           bsClass: "form-control",
-                          placeholder: "(555) 555-5555 ",
+                          placeholder: "",
                           defaultValue: "",
                           onChange: this.handleInputChange
                         },
@@ -218,7 +218,7 @@ class createProject extends Component {
                           label: "Contact Email",
                           type: "email",
                           bsClass: "form-control",
-                          placeholder: "contact@exxon.com",
+                          placeholder: "",
                           defaultValue: "",
                           onChange: this.handleInputChange
                         }

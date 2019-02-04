@@ -2,9 +2,6 @@ import Dashboard from "views/Dashboard/Dashboard";
 import createProject from "views/createProject/createProject";
 import TableList from "views/TableList/TableList";
 import editProject from "views/editProject/editProject";
-//import editProject from "views/editProject/editProject";
-// import Notifications from "views/Notifications/Notifications";
-// import Upgrade from "views/Upgrade/Upgrade";
 
 const dashboardRoutes = [
   {

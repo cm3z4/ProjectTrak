@@ -35,7 +35,7 @@ class editProject extends Component {
     estimatedValue: 0,
     projectDescription: "",
     estimator: "",
-    revisionNumber: 1,
+    revisionNumber: 0,
     type: "",
     bidDue: "",
     bidSubmitted: "",
