@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import HeaderLinks from "../Header/HeaderLinks.jsx";
 
 import imagine from "assets/img/refine.jpg";
-import logo from "assets/img/projectTrakLogo.png";
+import logo from "assets/img/ptrak.svg";
 
 import dashboardRoutes from "routes/dashboard.jsx";
 
@@ -57,6 +57,7 @@ class Sidebar extends Component {
           <ul className="nav">
             {this.state.width <= 991 ? <HeaderLinks /> : null}
             {dashboardRoutes.map((prop, key) => {
+              if(prop.invisible) return null;
               if (!prop.redirect)
                 return (
                   <li
