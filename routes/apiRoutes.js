@@ -72,7 +72,7 @@ router.post("/delete", (req, res) => {
         });
 });
 
-// Get all projects for project-trak db
+// Get all projects for project-trak db.
 router.get("/projects", (req, res) => {
     console.log("The /projects route is working.");
     models.Project
@@ -81,6 +81,21 @@ router.get("/projects", (req, res) => {
         .then(function (dbProject) {
             //console.log(dbProject)
             res.json(dbProject)
+        })
+        .catch(function (err) {
+            console.log(err);
+        });
+});
+
+// Get all projects with status "Won".
+router.get("/metrics", (req, res) => {
+    console.log("The /metrics route is working.");
+    models.Project
+        .find({ status: "Won" })
+        .sort({ date: -1 })
+        .then(function (wonProjects) {
+            //console.log(wonProjects)
+            res.json(wonProjects)
         })
         .catch(function (err) {
             console.log(err);
