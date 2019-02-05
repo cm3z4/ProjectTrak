@@ -20,7 +20,7 @@ class HeaderLinks extends Component {
           </NavItem>
         </Nav>
         <Nav pullRight>
-        <NavDropdown
+          <NavDropdown
             eventKey={2}
             title={notification}
             noCaret
@@ -33,7 +33,7 @@ class HeaderLinks extends Component {
             <MenuItem eventKey={2.5}>Another notifications</MenuItem>
           </NavDropdown>
           <NavItem eventKey={3} href="#">
-            Log out
+            Demo
           </NavItem>
         </Nav>
       </div>
