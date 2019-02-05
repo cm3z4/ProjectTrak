@@ -8,11 +8,6 @@ import { Tasks } from "components/Tasks/Tasks.jsx";
 import Axios from "axios";
 import {
   legendPie,
-  dataSales,
-  optionsSales,
-  responsiveSales,
-  legendSales,
-  dataBar,
   optionsBar,
   responsiveBar,
   legendBar
@@ -27,6 +22,25 @@ class Dashboard extends Component {
     projectedRev20: 0,
     dataPie: {
       labels: ["55%", "25%", "20%"], series: [55, 25, 20]
+    },
+    dataBar: {
+      labels: [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec"
+      ],
+      series: [
+        [1, 2, 0, 0, 3, 2, 6, 3, 1, 2, 1, 3]
+      ]
     }
   };
 
@@ -91,6 +105,91 @@ class Dashboard extends Component {
         this.setState({
           dataPie: { labels: [`${wonData}%`, `${lostData}%`, `${pendingData}%`], series: [wonData, lostData, pendingData] }
         });
+
+        let jan = 0;
+        let feb = 0;
+        let mar = 0;
+        let apr = 0;
+        let may = 0;
+        let jun = 0;
+        let jul = 0;
+        let aug = 0;
+        let sep = 0;
+        let oct = 0;
+        let nov = 0;
+        let dec = 0;
+
+        for (let i = 0; i < proj.length; i++) {
+          let filterProj = proj[i].bid_submitted;
+
+
+          if (filterProj !== null) {
+            let filterDate = filterProj.charAt(5) + filterProj.charAt(6);
+
+            if (filterDate === "01") {
+              jan++;
+            } else if (filterDate === "02") {
+              feb++;
+            } else if (filterDate === "03") {
+              mar++;
+            } else if (filterDate === "04") {
+              apr++;
+            } else if (filterDate === "05") {
+              may++;
+            } else if (filterDate === "06") {
+              jun++;
+            } else if (filterDate === "07") {
+              jul++;
+            } else if (filterDate === "08") {
+              aug++;
+            } else if (filterDate === "09") {
+              sep++;
+            } else if (filterDate === "10") {
+              oct++;
+            } else if (filterDate === "11") {
+              nov++;
+            } else if (filterDate === "12") {
+              dec++;
+            };
+          };
+        };
+        console.log(jan);
+        console.log(feb);
+        console.log(mar);
+        console.log(apr);
+        console.log(may);
+        console.log(jun);
+        console.log(jul);
+        console.log(aug);
+        console.log(sep);
+        console.log(oct);
+        console.log(nov);
+        console.log(dec);
+
+        this.setState({
+          dataBar: {
+            labels: [
+              "Jan",
+              "Feb",
+              "Mar",
+              "Apr",
+              "May",
+              "Jun",
+              "Jul",
+              "Aug",
+              "Sep",
+              "Oct",
+              "Nov",
+              "Dec"
+            ],
+            series: [
+              [jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec]
+            ]
+          }
+
+        })
+
+
       });
   };
 
@@ -148,78 +247,54 @@ class Dashboard extends Component {
             </Col>
           </Row>
           <Row>
-            <Col md={8}>
-              <Card
-                statsIcon="fa fa-history"
-                id="chartHours"
-                title="Company Performance"
-                category="Monthly performance"
-                stats="Updated 3 minutes ago"
-                content={
-                  <div className="ct-chart">
-                    <ChartistGraph
-                      data={dataSales}
-                      type="Line"
-                      options={optionsSales}
-                      responsiveOptions={responsiveSales}
-                    />
-                  </div>
-                }
-                legend={
-                  <div className="legend">{this.createLegend(legendSales)}</div>
-                }
-              />
-            </Col>
-            <Col md={4}>
-              <Card
-                statsIcon="fa fa-clock-o"
-                title="Win/Loss Ratio"
-                category="All Projects"
-                stats="2019/2020"
-                content={
-                  <div
-                    id="chartPreferences"
-                    className="ct-chart ct-perfect-fourth"
-                  >
-                    <ChartistGraph data={this.state.dataPie} type="Pie" />
-                  </div>
-                }
-                legend={
-                  <div className="legend">{this.createLegend(legendPie)}</div>
-                }
-              />
-            </Col>
-          </Row>
+            <Row>
+              <Col md={8}>
+                <Card
+                  id="chartActivity"
+                  title="Bidding Activity"
+                  category="All Projects"
+                  stats="2019/2020"
+                  statsIcon="pe-7s-date"
+                  content={
+                    <div className="ct-chart">
+                      <ChartistGraph
+                        data={this.state.dataBar}
+                        type="Bar"
+                        options={optionsBar}
+                        responsiveOptions={responsiveBar}
+                      />
+                    </div>
+                  }
+                  legend={
+                    <div className="legend">{this.createLegend(legendBar)}</div>
+                  }
+                />
+              </Col>
+              <Col md={4}>
+                <Card
+                  statsIcon="pe-7s-date"
+                  title="Win/Loss Ratio"
+                  category="All Projects"
+                  stats="2019/2020"
+                  content={
+                    <div
+                      id="chartPreferences"
+                      className="ct-chart ct-perfect-fourth"
+                    >
+                      <ChartistGraph data={this.state.dataPie} type="Pie" />
+                    </div>
+                  }
+                  legend={
+                    <div className="legend">{this.createLegend(legendPie)}</div>
+                  }
+                />
+              </Col>
+            </Row>
 
-          <Row>
-            <Col md={6}>
+            <Col md={12}>
               <Card
-                id="chartActivity"
-                title="John Smith"
-                category="Monthly Performance"
-                stats="Data information certified"
-                statsIcon="fa fa-check"
-                content={
-                  <div className="ct-chart">
-                    <ChartistGraph
-                      data={dataBar}
-                      type="Bar"
-                      options={optionsBar}
-                      responsiveOptions={responsiveBar}
-                    />
-                  </div>
-                }
-                legend={
-                  <div className="legend">{this.createLegend(legendBar)}</div>
-                }
-              />
-            </Col>
-
-            <Col md={6}>
-              <Card
-                title="Projects"
-                category="Recent projects added/updated"
-                stats="Updated 3 minutes ago"
+                title="To-do List"
+                stats="Updated now"
                 statsIcon="fa fa-history"
                 content={
                   <div className="table-full-width">

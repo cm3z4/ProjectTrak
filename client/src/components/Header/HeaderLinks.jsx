@@ -26,11 +26,11 @@ class HeaderLinks extends Component {
             noCaret
             id="basic-nav-dropdown"
           >
-            <MenuItem eventKey={2.1}>you have 1 new messages</MenuItem>
-            <MenuItem eventKey={2.2}>Notification 2</MenuItem>
+            <MenuItem eventKey={2.1}>New project created.</MenuItem>
+            {/* <MenuItem eventKey={2.2}>Notification 2</MenuItem>
             <MenuItem eventKey={2.3}>Notification 3</MenuItem>
             <MenuItem eventKey={2.4}>Notification 4</MenuItem>
-            <MenuItem eventKey={2.5}>Another notifications</MenuItem>
+            <MenuItem eventKey={2.5}>Another notifications</MenuItem> */}
           </NavDropdown>
           <NavItem eventKey={3} href="#">
             Demo

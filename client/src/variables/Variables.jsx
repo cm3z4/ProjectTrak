@@ -527,6 +527,7 @@ var responsiveSales = [
     }
   ]
 ];
+
 var legendSales = {
   names: ["Won", "Loss", "Pending"],
   types: ["info", "danger", "warning"]
@@ -539,7 +540,7 @@ var dataBar = {
     "Feb",
     "Mar",
     "Apr",
-    "Mai",
+    "May",
     "Jun",
     "Jul",
     "Aug",
@@ -549,9 +550,9 @@ var dataBar = {
     "Dec"
   ],
   series: [
-    [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895],
-    [412, 243, 280, 580, 453, 353, 300, 364, 368, 410, 636, 695],
-    [412, 243, 280, 580, 453, 353, 300, 364, 368, 410, 636, 695]
+    [1, 2, 0, 0, 3, 2, 6, 3, 1, 2, 1, 3],
+    [2, 3, 0, 0, 3, 3, 0, 4, 2, 1, 0, 3],
+    [2, 3, 0, 0, 3, 3, 1, 3, 3, 0, 1, 2]
   ]
 };
 var optionsBar = {
@@ -574,9 +575,10 @@ var responsiveBar = [
     }
   ]
 ];
+
 var legendBar = {
-  names: ["Wins", "Loss", "Pending"],
-  types: ["info", "Danger", "warning"]
+  names: ["Proposal Submittied "],
+  types: ["info"]
 };
 
 module.exports = {
