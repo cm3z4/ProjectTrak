@@ -16,7 +16,7 @@ class Footer extends Component {
           </nav>
           <p className="copyright pull-right">
             &copy; {"2019"}{" "}
-            <a href="https://www.pinmart.com/assets/1/6/DimRegular/363_1k.jpg?13881">ProjectTrak</a>
+            <a href="#">ProjectTrak</a>
           </p>
         </Grid>
       </footer>
