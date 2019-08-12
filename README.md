@@ -6,10 +6,10 @@ ProjectTrak is a project management application built with the MERN stack.
 
 #### Features:
 
-View data charts/graphs for projected revenue/man-hours.
-Visualize monthly bidding activity.
-Visualize win/loss ratios.
-Create new projects and edit/delete existing projects.
+- View data charts/graphs for projected revenue/man-hours.
+- Visualize monthly bidding activity.
+- Visualize win/loss ratios.
+- Create new projects and edit/delete existing projects.
 
 #### Screenshot
 
