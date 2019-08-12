@@ -1,19 +1,21 @@
-# Project Trak
+# ProjectTrak
 
 #### Description
 
-A project management application built with the MERN stack.
+ProjectTrak is a project management application built with the MERN stack.
 
 #### Features:
 
-View data charts/graphs for projected revenue and man-hours.
+View data charts/graphs for projected revenue/man-hours.
 Visualize monthly bidding activity.
-Visualize Win/Loss ratios.
-Create a new project and edit existing project according to phase.
-Delete a project from the database.
+Visualize win/loss ratios.
+Create new projects and edit/delete existing projects.
 
 #### Screenshot
 
 ![](./screenshot.png)
 
-You can demo it here --> https://young-shelf-26898.herokuapp.com/#/dashboard
+
+Feel free to view/interact with the live demo.
+
+Live URL: https://young-shelf-26898.herokuapp.com/#/dashboard
